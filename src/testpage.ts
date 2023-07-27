@@ -2,7 +2,7 @@
  * File: GUI.ts
  * Author: Blake Stephenson
  * Created: 2023-07-25
- * Description: GUI for main game page
+ * Description: This page is useless
  */
 
 import {

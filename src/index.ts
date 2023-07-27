@@ -16,7 +16,8 @@ import {
 import {
 	HexGrid,
 	Mask,
-	Bar
+	Bar,
+	Hitbox
 } from './GUI'
 
 const app = new Application({
@@ -33,16 +34,22 @@ const bar = new Bar(app.screen)
 
 //create board, contains grid
 const board = new Container()
-let grid = new HexGrid(4,8,bar)
+let grid = new HexGrid(4,8,bar,app.screen)
 board.addChild(grid.getGrid())
 
-//crreate mask
-const mask = new Mask(app.screen)
+//create game hitbox
+const hitbox = new Hitbox(app.screen, grid)
+
+//create mask
+const mask = new Mask(app.screen, grid)
 
 //add to app, board<mask<toolbar
+app.stage.addChild(hitbox.getHitbox())
 app.stage.addChild(board)
 app.stage.addChild(mask.getMask())
 app.stage.addChild(bar.getBar())
+
+
 
 export {
 	app,
