@@ -100,10 +100,6 @@ class Pixel {
         this.graphics.on('mouseup', () => {
             this.parentGrid.setIsDragging(false, 0, 0)
         })
-        /*
-        this.graphics.on('mouseout', () => {
-            this.parentGrid.setIsDragging(false, 0, 0)
-        })*/
         this.graphics.on('mousemove', (event) => {
             if (this.parentGrid.getIsDragging()) {
                 this.bar.setSelection(0)
@@ -114,13 +110,8 @@ class Pixel {
     }
 
     private handleMouseWheel(event: WheelEvent) {
-        // Print the mouse wheel movement
-        //console.log('Mouse wheel movement hex:', event.deltaY, this.row, this.col)
         this.parentGrid.zoomGrid(-event.deltaY, this.row, this.col)
-        // You can perform additional actions based on the mouse wheel movement here
     }
-
-
 
     drawHex() {
         this.graphics.beginFill(0xFFFFFF) // Fill color (red in this example)
@@ -195,7 +186,7 @@ class HexGrid {
     }
 
     minScale = 0.1;
-    maxScale = 10;
+    maxScale = 5;
     zoomSpeed = 0.1; // Adjust this value to control zoom speed
 
     constructor(rows: number, cols: number, bar: Bar, appScreen: Rectangle) {
